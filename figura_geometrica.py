@@ -1,47 +1,59 @@
-# Este script contiene errores comunes que violan las normas PEP 8
-
+''' Programa para hallar el area de figuras geometricas'''
 from abc import ABC, abstractmethod
 
-class FiguraGeometrica(ABC):
+
+class FiguraGeometrica(ABC):  # pylint: disable=too-few-public-methods
     """Clase abstracta que define la interfaz para calcular áreas."""
+
     @abstractmethod
     def calcular_area(self):
         """Método abstracto para calcular el área de una figura."""
-        pass
+
 
 
 class Rectangulo(FiguraGeometrica):
-    def __init__(self, base , altura):
-        self.base=base
-        self.altura=altura
+    """Clase que representa la figura geométrica rectángulo."""
+
+    def __init__(self, base, altura):
+        self.base = base
+        self.altura = altura
 
     def calcular_area(self):
         """Calcula el área del rectángulo."""
-        area=self.base*self.altura
-        return area
+        return self.base * self.altura
+
+    def __str__(self):
+        return f"Rectángulo(base={self.base}, altura={self.altura})"
 
 
 class Triangulo(FiguraGeometrica):
-    def __init__(self, base , altura):
-        self.base=base
-        self.altura=altura
+    """Clase que representa la figura geométrica triángulo."""
+
+    def __init__(self, base, altura):
+        self.base = base
+        self.altura = altura
 
     def calcular_area(self):
         """Calcula el área del triángulo."""
-        area=(self.base*self.altura)/2
-        return area
+        return (self.base * self.altura) / 2
+
+    def __str__(self):
+        return f"Triángulo(base={self.base}, altura={self.altura})"
 
 
 class Circulo(FiguraGeometrica):
+    """Clase que representa la figura geométrica círculo."""
+
     def __init__(self, radio):
-        self.pi =3.14159
-        self.radio=radio
+        self.pi = 3.14159
+        self.radio = radio
 
     def calcular_area(self):
         """Calcula el área del círculo."""
-        area=self.pi*(self.radio**2)
-        return area
+        return self.pi * (self.radio ** 2)
 
+    def __str__(self):
+        return f"Círculo(radio={self.radio})"
 
 # Variables globales
 BASE_RECTANGULO =10
